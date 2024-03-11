@@ -58,7 +58,7 @@ const ListContainer = ({ list, setList, setDesc, setTitle, setFlag }) => {
             open ? "opacity-100" : "opacity-100"
           }`}
         >
-          <h3 className="font-normal text-white divide-light flex flex-nowrap whitespace-nowrap max-md:flex-nowrap max-sm:text-left   text-base  font-sans border-t-2 border-b-2 border-solid border-light max-md:w-[16%] max-sm:w-[12%] sm:w-[16%] md:w-[4.5%] max-md:text-center w-[5%] max-h-[20%]">
+          <h3 className="font-normal text-white divide-light flex flex-nowrap whitespace-nowrap max-md:flex-nowrap max-sm:text-left   text-base  font-sans border-t-2 border-b-2 border-solid border-light max-md:w-[16%] max-sm:w-[20%] sm:w-[12%] md:w-[4.5%] max-md:text-center w-[5%] max-h-[20%]">
             No tasks
           </h3>
         </div>

@@ -29,10 +29,10 @@ const Body = () => {
   return (
     <>
       <form id="form-id" onSubmit={submitHandler}>
-        <div id="form-id" className=" flex justify-center gap-2 mt-10 text-center">
+        <div id="form-id" className=" flex justify-center gap-2 mt-10 text-center ">
           <div className="flex flex-col gap-1">
             <input
-              className="w-96 border-[1px] rounded border-solid border-light pl-5 bg-primary text-white"
+              className="w-96 max-md:w-auto border-[1px] rounded border-solid border-light pl-5 bg-primary text-white"
               type="text"
               value={title}
               placeholder="Title..."
