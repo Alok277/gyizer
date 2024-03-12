@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ListContainer from "./ListContainer";
-
-
 
 const Body = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [list, setList] = useState([]);
   const [flag, setFlag] = useState(false);
+
+  useEffect(() => {
+    const storedList = JSON.parse(localStorage.getItem("list"));
+    if (storedList) {
+      setList(storedList);
+    }
+  }, []);
+ 
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -19,17 +25,24 @@ const Body = () => {
       title: title,
       desc: desc,
     };
-    setList([...list, obj]);
+    setList((prevState) => {
+      const updatedList = [...prevState, obj];
+      localStorage.setItem("list", JSON.stringify(updatedList));
+      return updatedList;
+    });
     setTitle("");
     setDesc("");
-    setFlag(false)
+    setFlag(false);
   };
-  console.log(list)
+  console.log(list);
 
   return (
     <>
       <form id="form-id" onSubmit={submitHandler}>
-        <div id="form-id" className=" flex justify-center gap-2 mt-10 text-center ">
+        <div
+          id="form-id"
+          className=" flex justify-center gap-2 mt-10 text-center "
+        >
           <div className="flex flex-col gap-1">
             <input
               className="w-96 max-md:w-auto border-[1px] rounded border-solid border-light pl-5 bg-primary text-white"
@@ -72,7 +85,6 @@ const Body = () => {
           setTitle={setTitle}
           setDesc={setDesc}
           setFlag={setFlag}
-          
         />
       </div>
     </>

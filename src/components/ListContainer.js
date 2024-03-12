@@ -1,13 +1,19 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 
 const ListContainer = ({ list, setList, setDesc, setTitle, setFlag }) => {
   const [open, setOpen] = useState(false);
   const [removeTodo, setRemoveTodo] = useState(null);
+
+  
+  console.log(localStorage.getItem('list'))
   const deleteHandler = (todo) => {
-    const updated = list.filter((item) => item.id !== todo.id);
-    setList(updated);
+    const localList=JSON.parse(localStorage.getItem('list'));
+    const updatedList=localList.filter((item)=>item.id!==todo.id);
+    localStorage.setItem('list',JSON.stringify(updatedList))
+    setList(updatedList)
+  
     setOpen(false);
     const appContainer = document.getElementById("app-container");
     const formDiv = document.getElementById("form-id");
